@@ -25,7 +25,7 @@
 							<a href="">请登入</a>
 						</li>
 						<li class="fl">
-							<a class="regist" href="javascript:void(0)">免费注册</a>
+							<a class="regist" href="/ssm_project/jsp/regist.jsp" target="_blank">免费注册</a>
 						</li>
 					</ul>
 				</div>

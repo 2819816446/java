@@ -489,10 +489,14 @@ $(function(){
 
 	countTime2();
 
-	// 如下处理点击事件
+	
+	
+	
+	// 如下处理点击事件 2019.05.21
 	var layer = layui.layer,form = layui.form;	
 	$(".regist").click(function(){
-		layer.msg("请注册账号");
+		//window.open ("/ssm_project/jsp/regist.jsp", "newwindow", "height=400, width=600, top=0, left=0,toolbar=no, menubar=no, scrollbars=no, resizable=no, location=n o, status=no")//写成一行 
+		//window.location.href='/ssm_project/jsp/regist.jsp';
 	});
 
 
