@@ -6,20 +6,6 @@
 
     <!-- 注解的支持，可以将请求参数绑定到控制器参数-->
     <mvc:annotation-driven/>
-
-    <!--注解扫描-->
-    <context:annotation-config>
-	    <context:component-scan base-package="com.ailen.service"/>
-	    <context:component-scan base-package="com.ailen.controller,solux.ailen.*.controller">
-	          <context:include-filter type="annotation" 
-	          expression="org.springframework.stereotype.Controller"/>
-	    </context:component-scan> 
-    </context:annotation-config>   
-    
-    <!-- 或者不需要config，直接如下所示 -->
-    <!-- <context:component-scan base-package="com.ailen.service"/>
-	<context:component-scan base-package="com.ailen.controller"/> -->
-    
     
     <!-- 处理请求返回json字符串的中文乱码问题 -->
     <mvc:annotation-driven>
@@ -36,6 +22,21 @@
             </bean>
         </mvc:message-converters>
     </mvc:annotation-driven>
+    <!--注解扫描-->
+    <!-- <context:annotation-config>
+	    <context:component-scan base-package="com.ailen.service"/>
+	    <context:component-scan base-package="com.ailen.controller,com.ailen.*.controller">
+	          <context:include-filter type="annotation" 
+	          expression="org.springframework.stereotype.Controller"/>
+	    </context:component-scan> 
+    </context:annotation-config>   --> 
+    
+    <!-- 或者不需要config，直接如下所示 -->
+    <context:component-scan base-package="com.ailen.service"/>
+	<context:component-scan base-package="com.ailen.controller"/>
+    
+    
+
     
     <!--静态资源处理，mapping：匹配URL，location：静态资源在WebApp中的位置-->
     <mvc:resources mapping="/common/**" location="/common/"/>

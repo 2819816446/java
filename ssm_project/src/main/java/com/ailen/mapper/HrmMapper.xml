@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper>
+	<!-- 用户注册，插入用户 -->
+	<insert id="insertUserByAccountPassword" parameterType="com.ailen.pojo.Hrm">
+		insert INTO hrm(account,password) values(#{account},#{password});
+	</insert>
+
+	<!-- 根据账号获取用户信息 -->
+	<select id="getHrmByAccount" parameterType="String">
+		select * from hrm where account = #{account}
+	</select>
+	
+</mapper>

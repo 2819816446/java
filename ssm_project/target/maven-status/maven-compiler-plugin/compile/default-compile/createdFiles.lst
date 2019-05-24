@@ -1,0 +1,5 @@
+com\ailen\mapper\HrmMapper.class
+com\ailen\service\HrmService.class
+com\ailen\controller\webAppController.class
+com\ailen\pojo\Hrm.class
+com\ailen\service\impl\HrmServiceImpl.class
