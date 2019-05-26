@@ -19,7 +19,7 @@ public interface HrmService {
 	* @return void 
 	* @date 2019年5月24日
 	 */
-	void registUserByAccountPassword(String account,String password);
+	int registUserByAccountPassword(String account,String password);
 	
 	/**
 	 * 通过账号查找用户

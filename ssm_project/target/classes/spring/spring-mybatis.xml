@@ -9,9 +9,7 @@
        http://www.springframework.org/schema/tx/spring-tx.xsd
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd">
-
     <context:property-placeholder location="classpath:database.properties"/>
-
     <!--数据源配置-->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
         <!--驱动-->
@@ -43,14 +41,20 @@
 
     <!-- 配置Mybatis的文件 ，mapperLocations配置**Mapper.xml文件位置，configLocation配置mybatis-config文件位置-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 设置数据源 -->
         <property name="dataSource" ref="dataSource"/>
-        <!-- <property name="mapperLocations" value="classpath:mapper/*.xml"/> -->
+        <!-- 设置MyBatis核心配置文件 -->
         <property name="configLocation" value="classpath:mybatis-config.xml"/>
+        <!-- 设置别名 包扫描 -->
+		<property name="typeAliasesPackage" value="com.ailen.pojo"/>
+		<!-- apperLocations配置**Mapper.xml文件位置    放resource才这样标注 -->
+        <property name="mapperLocations" value="classpath:mapper/**/*.xml"/>
     </bean>
 
     <!-- 自动扫描了所有的XxxxMapper.xml对应的mapper接口文件，这样就不用一个一个手动配置Mpper的映射了，
            只要Mapper接口类和Mapper映射文件对应起来就可以了 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+    	<!-- 设置Mapper扫描包 -->
         <property name="basePackage" value="com.ailen.mapper"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>

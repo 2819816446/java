@@ -1,11 +1,11 @@
 package com.ailen.mapper;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.ailen.pojo.Hrm;
 
-@Repository
 public interface HrmMapper {
 	/**
 	 * 
@@ -18,7 +18,7 @@ public interface HrmMapper {
 	* @return void 
 	* @date 2019年5月23日
 	 */
-	void insertUserByAccountPassword(@Param("account") String account,@Param("password") String password);
+	int insertUserByAccountPassword(@Param("account") String account,@Param("password") String password);
 
 	/**
 	 * 根据account号或者用户（Hrm）信息
@@ -28,5 +28,5 @@ public interface HrmMapper {
 	* @return Hrm 
 	* @date 2019年5月24日
 	 */
-	Hrm getHrmByAccount(@Param("account")String account);
+	Hrm getHrmByAccount(@Param("account") String account);
 }

@@ -2,14 +2,14 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper>
+<mapper namespace="com.ailen.mapper.HrmMapper">
 	<!-- 用户注册，插入用户 -->
 	<insert id="insertUserByAccountPassword" parameterType="com.ailen.pojo.Hrm">
 		insert INTO hrm(account,password) values(#{account},#{password});
 	</insert>
 
 	<!-- 根据账号获取用户信息 -->
-	<select id="getHrmByAccount" parameterType="String">
+	<select id="getHrmByAccount" parameterType="String" resultType="Hrm">
 		select * from hrm where account = #{account}
 	</select>
 	

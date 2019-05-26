@@ -1,7 +1,0 @@
-0:0:0:0:0:0:0:1 - - [25/May/2019:00:00:54 +0800] "GET /ssm_project/ HTTP/1.1" 200 69957 http-bio-8080-exec-1 1748
-0:0:0:0:0:0:0:1 - - [25/May/2019:00:00:54 +0800] "GET /ssm_project/images/title.icon HTTP/1.1" 200 955 http-bio-8080-exec-7 58
-0:0:0:0:0:0:0:1 - - [25/May/2019:00:01:02 +0800] "GET /ssm_project/jsp/regist.jsp HTTP/1.1" 200 2310 http-bio-8080-exec-8 297
-0:0:0:0:0:0:0:1 - - [25/May/2019:00:01:02 +0800] "GET /ssm_project/js/public.js HTTP/1.1" 304 - http-bio-8080-exec-9 28
-0:0:0:0:0:0:0:1 - - [25/May/2019:00:01:07 +0800] "POST /webApp/regist HTTP/1.1" 404 - http-bio-8080-exec-10 0
-0:0:0:0:0:0:0:1 - - [25/May/2019:00:01:15 +0800] "POST /webApp/regist HTTP/1.1" 404 - http-bio-8080-exec-10 0
-0:0:0:0:0:0:0:1 - - [25/May/2019:00:01:15 +0800] "POST /webApp/regist HTTP/1.1" 404 - http-bio-8080-exec-10 0

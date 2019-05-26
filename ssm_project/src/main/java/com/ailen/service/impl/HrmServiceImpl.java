@@ -1,6 +1,7 @@
 package com.ailen.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.ailen.mapper.HrmMapper;
 import com.ailen.pojo.Hrm;
@@ -14,16 +15,19 @@ import com.ailen.service.HrmService;
 * @param 
 * @date 2019年5月24日 下午9:01:57
  */
+
+// 缺少注释不能生成bean，controller注入会报错
+@Service
 public class HrmServiceImpl implements HrmService {
 	
 	
 	@Autowired
-	HrmMapper hrmMapper;
+	private HrmMapper hrmMapper;
 
 	@Override
-	public void registUserByAccountPassword(String account, String password) {
-		hrmMapper.insertUserByAccountPassword(account, password);
-		
+	public int registUserByAccountPassword(String account, String password) {
+		int i = hrmMapper.insertUserByAccountPassword(account, password);
+		return i;
 	}
 
 	@Override
