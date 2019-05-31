@@ -1,0 +1,6 @@
+0:0:0:0:0:0:0:1 - - [31/May/2019:00:40:15 +0800] "POST /ssm_project/AppController/getUsers HTTP/1.1" 200 507 http-bio-8080-exec-4 512
+0:0:0:0:0:0:0:1 - - [31/May/2019:00:42:21 +0800] "POST /ssm_project/AppController/getUsers HTTP/1.1" 200 507 http-bio-8080-exec-9 32676
+0:0:0:0:0:0:0:1 - - [31/May/2019:00:42:59 +0800] "GET /ssm_project/AppController/getUsers HTTP/1.1" 405 1045 http-bio-8080-exec-4 20
+0:0:0:0:0:0:0:1 - - [31/May/2019:00:43:50 +0800] "POST /ssm_project/AppController/getUsers HTTP/1.1" 200 507 http-bio-8080-exec-8 15062
+0:0:0:0:0:0:0:1 - - [31/May/2019:00:44:44 +0800] "POST /ssm_project/AppController/getUsers HTTP/1.1" 200 507 http-bio-8080-exec-8 3065
+0:0:0:0:0:0:0:1 - - [31/May/2019:00:46:20 +0800] "POST /ssm_project/AppController/getUsers HTTP/1.1" 200 507 http-bio-8080-exec-10 5261

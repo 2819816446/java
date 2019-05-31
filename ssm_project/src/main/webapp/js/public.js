@@ -28,6 +28,7 @@ var regist = function(account,password,password_comfirm){
 	    dataType:"json", //application/json;charset=utf-8 数据类型不是json的话，成功却进入error回调
 	    data:user_json,
 	    success:function(data){
+	    	console.log(data);
 	    	layer.msg(data.msg);
 	    },
 	    error:function(jqXHR){

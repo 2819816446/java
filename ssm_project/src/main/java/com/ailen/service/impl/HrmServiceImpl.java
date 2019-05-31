@@ -1,5 +1,7 @@
 package com.ailen.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +36,13 @@ public class HrmServiceImpl implements HrmService {
 	public Hrm getHrmByAccount(String account) {
 		Hrm hrm  = hrmMapper.getHrmByAccount(account);
 		return hrm;
+	}
+
+	@Override
+	public List<Hrm> getUsers() {
+		// TODO Auto-generated method stub
+		List<Hrm> lists = hrmMapper.getUsers();
+		return lists;
 	}	
 
 

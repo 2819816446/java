@@ -1,5 +1,7 @@
 package com.ailen.service;
 
+import java.util.List;
+
 import com.ailen.pojo.Hrm;
 
 /**
@@ -29,5 +31,14 @@ public interface HrmService {
 	* @return Hrm 
 	* @date 2019年5月24日
 	 */
-	Hrm getHrmByAccount(String account); 
+	Hrm getHrmByAccount(String account);
+
+	/**
+	 * 获取所有用户信息
+	* @author yzq
+	* @param @return
+	* @return List<Hrm> 
+	* @date 2019年5月29日
+	 */
+	List<Hrm> getUsers(); 
 }

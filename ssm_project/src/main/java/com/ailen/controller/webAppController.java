@@ -1,5 +1,7 @@
 package com.ailen.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ailen.pojo.Hrm;
 import com.ailen.service.HrmService;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 /**
 *
@@ -39,6 +42,13 @@ public class webAppController {
 			}else{ //用户不存在，则注册
 				int insertCount =  HrmService.registUserByAccountPassword(account, password);
 				if (insertCount >=1) {
+					Hrm hrm1 = HrmService.getHrmByAccount(account);
+					JSONObject obj = new JSONObject();
+					obj.put("id", hrm1.getId());
+					obj.put("account", hrm1.getAccount());
+					obj.put("userName", hrm1.getUserName());
+					obj.put("password", hrm1.getPassword());
+					jsonObject.put("user", obj);
 					jsonObject.put("status", true);
 					jsonObject.put("msg", "注册成功");					
 				}else{
@@ -57,4 +67,34 @@ public class webAppController {
 
 		
 	}
+	
+	@RequestMapping(value="/getUsers", method = RequestMethod.POST)
+	@ResponseBody
+	public JSONObject getUsers() {
+		List<Hrm> lists = HrmService.getUsers();
+		JSONObject jsonObject = new JSONObject();
+		JSONArray dataArr = new JSONArray();
+		
+		if (lists != null) {
+			for (Hrm hrm : lists) {
+				JSONObject o = new JSONObject();
+				o.put("id", hrm.getId());
+				o.put("username", hrm.getUserName());
+				o.put("account", hrm.getAccount());
+				o.put("password", hrm.getPassword());
+				dataArr.add(o);
+			}
+			jsonObject.put("code", 0);
+			jsonObject.put("msg", "获取成功!");
+			jsonObject.put("count", lists.size());
+			jsonObject.put("data", dataArr);
+		}else{
+			jsonObject.put("lists", "noDate");
+		}
+		return jsonObject;
+		
+	}
+	
+	
+	
 }

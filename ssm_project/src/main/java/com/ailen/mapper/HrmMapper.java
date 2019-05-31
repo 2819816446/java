@@ -1,5 +1,7 @@
 package com.ailen.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -29,4 +31,13 @@ public interface HrmMapper {
 	* @date 2019年5月24日
 	 */
 	Hrm getHrmByAccount(@Param("account") String account);
+
+	/**
+	 * 获取所有用户信息
+	* @author yzq
+	* @param @return
+	* @return List<Hrm> 
+	* @date 2019年5月29日
+	 */
+	List<Hrm> getUsers();
 }

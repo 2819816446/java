@@ -13,4 +13,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from hrm where account = #{account}
 	</select>
 	
+	<!-- 获取所有用户信息 -->
+	<select id="getUsers" resultType="Hrm">
+		select * from hrm where 1=1	
+	</select>
 </mapper>
