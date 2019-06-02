@@ -40,5 +40,58 @@ public interface HrmService {
 	* @return List<Hrm> 
 	* @date 2019年5月29日
 	 */
-	List<Hrm> getUsers(); 
+	List<Hrm> getUsers();
+
+	/**
+	 * 根据id获取用户信息
+	* @author yzq
+	* @param @param id
+	* @param @return
+	* @return Hrm 
+	* @date 2019年6月1日
+	 */
+	Hrm getHrmById(String id);
+
+	/**
+	 * 通哟id删除用户
+	* @author yzq
+	* @param @param id
+	* @param @return
+	* @return int 
+	* @date 2019年6月1日
+	 */
+	int deleteUserById(String id);
+
+	/**
+	 * 分页获取所有用户信息
+	* @author yzq
+	* @param @param page
+	* @param @param limit
+	* @param @return
+	* @return List<Hrm> 
+	* @date 2019年6月2日
+	 */
+	List<Hrm> getUsersWithPagination(int page, int limit); 
+	
+	/**
+	 * 获取hrm总数
+	* @author yzq
+	* @param @return
+	* @return int 
+	* @date 2019年6月2日
+	 */
+	int getUserCounts();
+
+	/**
+	 * 修改用户信息
+	* @author yzq
+	 * @param string 
+	 * @param username 
+	 * @param password 
+	* @param @param id
+	* @param @return
+	* @return int 
+	* @date 2019年6月2日
+	 */
+	int updateUserInfo(String id, String username, String string, String password);
 }

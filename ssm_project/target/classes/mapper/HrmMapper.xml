@@ -17,4 +17,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getUsers" resultType="Hrm">
 		select * from hrm where 1=1	
 	</select>
+	
+	<!-- 获取所有用户信息  分页获取 注意：多个参数，未使用对象封装在dao层（mapper接口）需要@param来定义接收-->
+	<select id="getUsersWithPagination"   resultType="Hrm">
+		select * from hrm where 1=1	limit #{start},#{pageSize}
+	</select>	
+	
+	<!-- 根据id获取用户信息 Integer -->
+	<select id="getHrmById" parameterType="String" resultType="Hrm"> 
+		select * from hrm where 1=1	and id = #{id}
+	</select>
+	
+	<!-- 获取hrm总数  -->
+	<select id="getUserCounts" resultType="Integer"> 
+		select count(*)  from hrm where 1=1
+	</select>	
+	
+	<!-- 根据id删除用户信息 -->
+	<delete id="deleteUserById" parameterType="String" > 
+		delete from hrm where 1=1	and id = #{id}
+	</delete>
+	
+	<!-- 根据id修改用户信息 -->
+	<update id="updateUserInfo" parameterType="String">
+		UPDATE hrm set userName = #{username}, account = #{account},`password`=#{password}  where id = #{id}
+	</update>
+	
 </mapper>

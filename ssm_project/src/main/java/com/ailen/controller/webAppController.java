@@ -72,6 +72,7 @@ public class webAppController {
 	@ResponseBody
 	public JSONObject getUsers() {
 		List<Hrm> lists = HrmService.getUsers();
+		int allCount = HrmService.getUserCounts(); //获取总数
 		JSONObject jsonObject = new JSONObject();
 		JSONArray dataArr = new JSONArray();
 		
@@ -86,7 +87,7 @@ public class webAppController {
 			}
 			jsonObject.put("code", 0);
 			jsonObject.put("msg", "获取成功!");
-			jsonObject.put("count", lists.size());
+			jsonObject.put("count", allCount);
 			jsonObject.put("data", dataArr);
 		}else{
 			jsonObject.put("lists", "noDate");
@@ -94,6 +95,116 @@ public class webAppController {
 		return jsonObject;
 		
 	}
+	
+	/**
+	 * 
+	* @author yzq
+	* @param @param page  	 当前页
+	* @param @param limit	每页显示条数 
+	* @param @return
+	* @return JSONObject 
+	* @date 2019年6月2日
+	 */
+	@RequestMapping(value="/getUsersWithPagination", method = RequestMethod.POST)
+	@ResponseBody
+	public JSONObject getUsersWithPagination(int page,int limit) {
+		JSONArray dataArr = new JSONArray();
+		JSONObject jsonObject = new JSONObject();
+		
+		try {
+			List<Hrm> lists = HrmService.getUsersWithPagination(page,limit);
+			int allCount = HrmService.getUserCounts(); //获取总数
+			if (lists != null) {
+				for (Hrm hrm : lists) {
+					JSONObject o = new JSONObject();
+					o.put("id", hrm.getId());
+					o.put("username", hrm.getUserName());
+					o.put("account", hrm.getAccount());
+					o.put("password", hrm.getPassword());
+					dataArr.add(o);
+				}
+				jsonObject.put("code", 0);
+				jsonObject.put("msg", "获取成功!");
+				jsonObject.put("count", allCount);
+				jsonObject.put("data", dataArr);
+			}else{
+				jsonObject.put("lists", "noDate");
+				jsonObject.put("msg", "获取失败!");
+			}
+		} catch (Exception e) {
+			jsonObject.put("status", false);
+			jsonObject.put("msg", "服务器报错!");
+			
+		}
+		return jsonObject;
+		
+	}	
+	@RequestMapping(value="/getHrmById",method= RequestMethod.POST)
+	@ResponseBody
+	public JSONObject getHrmById(String id){
+		JSONObject jsonObject = new JSONObject();
+		Hrm hrm = HrmService.getHrmById(id);
+		if (hrm != null) { //用户信息存在
+			jsonObject.put("status", true);
+			jsonObject.put("msg", "获取用户信息成功!");
+			jsonObject.put("id", hrm.getId());
+			jsonObject.put("username", hrm.getUserName());
+			jsonObject.put("account", hrm.getAccount());
+			jsonObject.put("password", hrm.getPassword());
+		}else{ 
+			jsonObject.put("status", false);
+			jsonObject.put("msg", "用户不存存在");
+
+
+		}			
+		return jsonObject;
+		
+	}
+	
+	@RequestMapping(value="/deleteUserById",method=RequestMethod.POST)
+	@ResponseBody
+	public JSONObject deleteUserById(String id) {
+		JSONObject jsonObject = new JSONObject();
+		try {
+			int count = HrmService.deleteUserById(id);
+			if (count >= 1) { //删除成功
+				jsonObject.put("status", true);
+				jsonObject.put("msg", "用户删除成功!");
+			}else{ 
+				jsonObject.put("status", false);
+				jsonObject.put("msg", "用户删除失败");
+			}			
+		} catch (Exception e) {
+			jsonObject.put("status", false);
+			jsonObject.put("msg", "服务器报错!");
+		}
+		return jsonObject;
+		
+	}
+	
+	@RequestMapping(value="/updateUserInfo",method=RequestMethod.POST)
+	@ResponseBody	
+	public JSONObject updateUserInfoById(String id,String username,String account,String password) {
+		JSONObject jsonObject = new JSONObject();
+		try {
+			int count = HrmService.updateUserInfo(id,username,account,password);
+			if (count >= 1) { //删除成功
+				jsonObject.put("status", true);
+				jsonObject.put("msg", "修改成功!");
+			}else{ 
+				jsonObject.put("status", false);
+				jsonObject.put("msg", "修改失败");
+			}			
+		} catch (Exception e) {
+			jsonObject.put("status", false);
+			jsonObject.put("msg", "服务器报错!");
+		}
+		return jsonObject;
+		
+	}
+	
+	
+	
 	
 	
 	
